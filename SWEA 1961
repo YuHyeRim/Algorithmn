@@ -1,0 +1,33 @@
+
+T = int(input())
+
+### 90도씩 돌리는 함수 => list_를 계속 덮어쓰기
+def rotate(arr):
+    rotate_ = []
+    for c in range(len(arr)):
+        arr2 = [arr[r][c] for r in range(len(arr)-1,-1,-1)]
+        rotate_.append(arr2)
+    
+    return rotate_
+            
+
+for idx in range(T):
+    
+    N = int(input())
+    list_, ans = [], [[] for _ in range(N)]
+    for _ in range(N):
+        list_.append(list(map(str, input().split())))
+    
+    
+    for i in range(3):
+        list_ = rotate(list_)
+        
+        for t in range(N):
+            ans[t].append(('').join(list_[t]))
+    
+    ### print
+    print('#{}'.format(idx+1))
+    for idx2 in range(N):
+        print(*ans[idx2])
+        
+        
